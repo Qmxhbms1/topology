@@ -1,0 +1,123 @@
+% ===================================================================
+% PREAMBLE FOR MATHEMATICS EXERCISE NOTEBOOK
+% ===================================================================
+% This file contains all the packages and custom commands for the document.
+% Keeping it separate from main.tex makes the project cleaner.
+
+
+% -------------------------------------------------------------------
+% DOCUMENT & ENCODING
+% -------------------------------------------------------------------
+\usepackage[utf8]{inputenc} % Allows you to type characters like á, ö, etc. directly
+\usepackage[T1]{fontenc}    % Specifies font encoding, improves font rendering and hyphenation
+
+
+% -------------------------------------------------------------------
+% PAGE LAYOUT & GEOMETRY
+% -------------------------------------------------------------------
+\usepackage{geometry}
+\geometry{
+  a4paper,         % Or letterpaper, etc.
+  total={170mm,257mm},
+  left=20mm,
+  top=20mm,
+}
+
+
+% -------------------------------------------------------------------
+% CORE MATH PACKAGES (AMS - American Mathematical Society)
+% -------------------------------------------------------------------
+\usepackage{amsmath}    % The premier package for typesetting math equations
+\usepackage{amssymb}    % Provides lots of extra math symbols (like \mathbb)
+\usepackage{amsthm}     % Comprehensive theorem-like environments
+\usepackage{mathtools}  % An extension of amsmath, provides more tools and fixes
+
+
+% -------------------------------------------------------------------
+% UTILITY & FORMATTING PACKAGES
+% -------------------------------------------------------------------
+\usepackage{graphicx}      % For including images (\includegraphics)
+\usepackage{xcolor}        % For defining and using colors
+\usepackage{booktabs}      % For creating beautiful, professional-looking tables (\toprule, \midrule, \bottomrule)
+\usepackage{siunitx}       % For typesetting numbers and units consistently
+\usepackage{enumitem}      % Provides more control over list environments (itemize, enumerate)
+
+
+% -------------------------------------------------------------------
+% HYPERLINKS & CROSS-REFERENCING
+% -------------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=teal,        % color of internal links (e.g., sections)
+    citecolor=green,       % color of links to bibliography
+    filecolor=magenta,     % color of file links
+    urlcolor=blue          % color of external links
+}
+
+
+% -------------------------------------------------------------------
+% THEOREM & DEFINITION ENVIRONMENTS
+% -------------------------------------------------------------------
+% This section sets up consistent numbering and styling for problems,
+% definitions, theorems, etc.
+
+\theoremstyle{definition} % Use a style that is less flashy than the default "plain" style
+\newtheorem{problem}{Problem}[section] % Number problems as Problem X.Y (where X is the section number)
+\newtheorem{theorem}[problem]{Theorem}     % Share the same counter as 'problem'
+\newtheorem{lemma}[problem]{Lemma}
+\newtheorem{corollary}[problem]{Corollary}
+\newtheorem{definition}[problem]{Definition}
+\newtheorem{example}[problem]{Example}
+\newtheorem{remark}[problem]{Remark}
+
+
+% -------------------------------------------------------------------
+% CUSTOM SOLUTION ENVIRONMENT
+% -------------------------------------------------------------------
+% We create a new "solution" environment that looks clean and
+% automatically adds a QED symbol at the end.
+
+\newenvironment{solution}
+  {
+   % Begin environment
+   \renewcommand\qedsymbol{$\blacksquare$} % Change the default QED symbol to a black square
+   \begin{proof}[Solution] % Base it on the 'proof' environment but change the title
+  }
+  {
+   % End environment
+   \end{proof}
+  }
+
+
+% -------------------------------------------------------------------
+% CUSTOM MATH COMMANDS (MACROS)
+% -------------------------------------------------------------------
+% Define shortcuts for commonly used mathematical notation to save
+% time and ensure consistency.
+
+% Sets of numbers
+\newcommand{\R}{\mathbb{R}} % Real numbers
+\newcommand{\C}{\mathbb{C}} % Complex numbers
+\newcommand{\N}{\mathbb{N}} % Natural numbers
+\newcommand{\Z}{\mathbb{Z}} % Integers
+\newcommand{\Q}{\mathbb{Q}} % Rational numbers
+
+% Calculus operators
+\newcommand{\dd}{\, \mathrm{d}} % For integrals, e.g., \int f(x)\dd x
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}} % Partial derivative
+\newcommand{\dv}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}} % Full derivative
+
+% Linear Algebra
+\DeclareMathOperator{\Tr}{Tr} % Trace of a matrix
+\newcommand{\T}{\mathsf{T}}   % Transpose, e.g., A^\T
+
+% Probability & Statistics
+\DeclareMathOperator{\E}{\mathbb{E}} % Expectation
+\DeclareMathOperator{\Var}{Var} % Variance
+\DeclareMathOperator{\Cov}{Cov} % Covariance
+
+
+% ===================================================================
+% END OF PREAMBLE
+% ===================================================================

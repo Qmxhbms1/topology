@@ -1,0 +1,149 @@
+\section{Topological Spaces}
+
+% Problem 3A
+\begin{problem}
+  If $A \subset X$, show that the family of all subsets of $X$ which contain $A$, together with the empty set $\emptyset$, is a topology on $X$. Describe the closure and interior operations. What topology results when $A = \emptyset$? When $A = X$?
+\end{problem}
+
+\begin{solution}
+  Let $A$ be a fixed subset of $X$. We define the family of sets $\mathcal{T}_A$ as:
+  \[ \mathcal{T}_A = \{U \subseteq X \mid A \subseteq U\} \cup \{\emptyset\} \]
+
+  \begin{enumerate}
+    \item \textbf{Empty set and whole space:} By definition, $\emptyset \in \mathcal{T}_A$. Since $A \subseteq X$, the whole space $X$ is a set containing $A$, so $X \in \mathcal{T}_A$.
+
+    \item \textbf{Arbitrary Union:} Let $\{U_i\}_{i \in I}$ be an arbitrary collection of sets in $\mathcal{T}_A$. If all $U_i = \emptyset$, their union is $\emptyset$, which is in $\mathcal{T}_A$. Otherwise, for each non-empty $U_i$, we have $A \subseteq U_i$. Then $A$ is also a subset of their union, $A \subseteq \bigcup_{i \in I} U_i$. Thus, the union is in $\mathcal{T}_A$.
+
+    \item \textbf{Finite Intersection:} Let $\{U_k\}_{k=1}^n$ be a finite collection of sets in $\mathcal{T}_A$. If any $U_k = \emptyset$, the intersection is $\emptyset \in \mathcal{T}_A$. If all are non-empty, then $A \subseteq U_k$ for all $k$. It follows that $A \subseteq \bigcap_{k=1}^n U_k$. Thus, the intersection is in $\mathcal{T}_A$.
+  \end{enumerate}
+  Therefore, $\mathcal{T}_A$ is a topology on $X$.
+
+  The open sets are $\emptyset$ and any set containing $A$. The closed sets are the complements of the open sets.
+  \begin{itemize}
+    \item The complement of $\emptyset$ is $X$.
+    \item The complement of an open set $U$ (where $A \subseteq U$) is a set $U^c$ such that $U^c \cap A = \emptyset$.
+  \end{itemize}
+  So, the closed sets are $X$ and all subsets of $X$ that are disjoint from $A$.
+
+  \begin{itemize}
+    \item \textbf{Closure:} The closure of a set $S$, denoted $\text{cl}(S)$, is the smallest closed set containing $S$.
+    \begin{itemize}
+        \item If $S \cap A = \emptyset$, then $S$ is itself a closed set. Thus, $\text{cl}(S) = S$.
+        \item If $S \cap A \neq \emptyset$, then $S$ cannot be contained in any closed set other than $X$ itself (since all other closed sets are disjoint from $A$). Therefore, $\text{cl}(S) = X$.
+    \end{itemize}
+
+    \item \textbf{Interior:} The interior of a set $S$, denoted $\text{int}(S)$, is the largest open set contained in $S$.
+    \begin{itemize}
+        \item If $A \subseteq S$, then $S$ is itself an open set. Thus, $\text{int}(S) = S$.
+        \item If $A \not\subseteq S$, then $S$ cannot contain any open set other than $\emptyset$ (since all other open sets must contain $A$). Therefore, $\text{int}(S) = \emptyset$.
+    \end{itemize}
+  \end{itemize}
+
+  \begin{itemize}
+    \item \textbf{When $A = \emptyset$:} The condition for a set $U$ to be open is $\emptyset \subseteq U$. This is true for every subset of $X$. Therefore, every subset of $X$ is open, and $\mathcal{T}_{\emptyset}$ is the \textbf{discrete topology}.
+    \item \textbf{When $A = X$:} The open sets are $\emptyset$ and any subset $U$ of $X$ such that $X \subseteq U$. The only such subset is $X$ itself. The only open sets are $\emptyset$ and $X$. This is the \textbf{trivial (or indiscrete) topology}.
+  \end{itemize}
+\end{solution}
+
+\begin{problem}
+  Describe the open sets in the topology on a set $X$ defined by the closure operation which, for a fixed non-empty subset $B \subseteq X$, is given by $\bar{S} = S \cup B$ for any non-empty set $S \subseteq X$, and $\bar{\emptyset} = \emptyset$.
+\end{problem}
+
+\begin{solution}
+  A set $C$ is closed if and only if $\bar{C} = C$.
+  \begin{itemize}
+      \item For the empty set, $\bar{\emptyset} = \emptyset$, so $\emptyset$ is a closed set.
+      \item For any non-empty set $C$, the condition $\bar{C} = C$ becomes $C \cup B = C$. This equality holds if and only if $B \subseteq C$.
+  \end{itemize}
+  Thus, the closed sets of this topology are the empty set and all subsets of $X$ that contain $B$.
+
+  The open sets are the complements of the closed sets.
+  \begin{itemize}
+      \item The complement of the closed set $\emptyset$ is $X$. So, $X$ is an open set.
+      \item Let $C$ be a non-empty closed set, so $B \subseteq C$. Its complement is $U = C^c$. The subset relation reverses under complementation, so $C^c \subseteq B^c$. This means $U \subseteq B^c$.
+  \end{itemize}
+  This shows that any open set (other than $X$) must be a subset of $B^c$.
+
+  To confirm this, we check if any subset of $B^c$ is an open set. Let $U \subseteq B^c$. Its complement is $U^c$. Taking complements again, we get $(B^c)^c \subseteq U^c$, which means $B \subseteq U^c$. By our definition of closed sets, any set containing $B$ is closed. Therefore, $U^c$ is a closed set, which means $U$ is an open set.
+
+  The family of open sets is therefore characterized as: \textbf{the entire space $X$ together with all subsets of the complement of $B$}.
+\end{solution}
+
+\begin{problem}
+  A subset $U \subseteq \mathbb{R}^2$ is called radially open if for every point $p \in U$, $U$ contains a line segment starting at $p$ in every direction. Prove that the set of all radially open subsets of $\mathbb{R}^2$ is a topology. Is this topology weaker, stronger, or neither, compared to the usual (standard) topology on $\mathbb{R}^2$?
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+      \item \textbf{Empty set and whole space:} $\emptyset$ is radially open because the condition is vacuously satisfied. $\mathbb{R}^2$ is radially open because from any point $p$, a line segment of any length in any direction remains in $\mathbb{R}^2$.
+      \item \textbf{Arbitrary Union:} Let $\{U_i\}_{i \in I}$ be a collection of radially open sets. Let $p \in \bigcup U_i$. Then $p \in U_k$ for some $k \in I$. Since $U_k$ is radially open, it contains a line segment from $p$ in every direction. As $U_k \subseteq \bigcup U_i$, this union also contains these same line segments. Thus, the union is radially open.
+      \item \textbf{Finite Intersection:} Let $U_1, U_2$ be two radially open sets. Let $p \in U_1 \cap U_2$. Since $p \in U_1$, for any direction $v$, there exists a segment $\{p+tv \mid 0 \le t < \epsilon_1\}$ contained in $U_1$. Similarly, since $p \in U_2$, there is a segment $\{p+tv \mid 0 \le t < \epsilon_2\}$ in $U_2$. The segment of length $\epsilon = \min(\epsilon_1, \epsilon_2) > 0$ is contained in both sets, and therefore in their intersection. The argument extends to any finite intersection by induction.
+  \end{enumerate}
+  The collection of radially open sets forms a topology on $\mathbb{R}^2$.
+
+  The radial topology is identical to the standard topology on $\mathbb{R}^2$.
+  \begin{enumerate}
+      \item \textbf{Every standard open set is radially open.} Let $U$ be open in the standard topology. For any $p \in U$, there exists an open ball $B(p, r)$ with radius $r>0$ such that $B(p, r) \subseteq U$. This ball contains a line segment of length $r$ starting at $p$ in every direction. Therefore, $U$ is radially open. This shows the radial topology is at least as strong as the standard one.
+
+      \item \textbf{Every radially open set is a standard open set.} Let $U$ be a radially open set. For any $p \in U$, we know that for every direction (unit vector) $v$, there is an $\epsilon_v > 0$ such that the segment from $p$ of length $\epsilon_v$ is in $U$. The set of all directions (the unit circle) is compact. It can be shown that the function mapping each direction $v$ to its corresponding $\epsilon_v$ is lower semi-continuous and thus attains a minimum value $r$ on the unit circle. Since every $\epsilon_v > 0$, their minimum $r$ must also be greater than 0. This implies that the entire open ball $B(p, r)$ is contained within $U$. Since this holds for any $p \in U$, $U$ is open in the standard topology. This shows the radial topology is at least as weak as the standard one.
+  \end{enumerate}
+  Since the radial topology is both stronger and weaker than the standard topology, they must be the same topology. They are \textbf{neither weaker nor stronger} because they are identical.
+\end{solution}
+
+\begin{problem}
+  Let $(X, \mathcal{T})$ be a topological space and let $A \subset X$. Show that the collection $\mathcal{T}_A = \{U \cup (V \cap A) \mid U, V \in \mathcal{T}\}$ is a topology on $X$.
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+      \item \textbf{Empty set and whole space:}
+      \begin{itemize}
+          \item Let $U = \emptyset, V = \emptyset$. Since $\emptyset \in \mathcal{T}$, we have $\emptyset \cup (\emptyset \cap A) = \emptyset \in \mathcal{T}_A$.
+          \item Let $U = X, V = X$. Since $X \in \mathcal{T}$, we have $X \cup (X \cap A) = X \in \mathcal{T}_A$.
+      \end{itemize}
+
+      \item \textbf{Arbitrary Union:} Let $\{W_i\}_{i \in I}$ be a collection of sets in $\mathcal{T}_A$, where $W_i = U_i \cup (V_i \cap A)$ for some $U_i, V_i \in \mathcal{T}$. Their union is:
+      \begin{align*}
+          \bigcup_{i \in I} W_i &= \bigcup_{i \in I} (U_i \cup (V_i \cap A)) \\
+          &= \left(\bigcup_{i \in I} U_i\right) \cup \left(\bigcup_{i \in I} (V_i \cap A)\right) \\
+          &= \left(\bigcup_{i \in I} U_i\right) \cup \left(\left(\bigcup_{i \in I} V_i\right) \cap A\right)
+      \end{align*}
+      Let $U' = \bigcup U_i$ and $V' = \bigcup V_i$. Since $\mathcal{T}$ is a topology, $U', V' \in \mathcal{T}$. The union is of the form $U' \cup (V' \cap A)$, so it is in $\mathcal{T}_A$.
+
+      \item \textbf{Finite Intersection:} Let $W_1 = U_1 \cup (V_1 \cap A)$ and $W_2 = U_2 \cup (V_2 \cap A)$. Their intersection is:
+      \begin{align*}
+          W_1 \cap W_2 &= (U_1 \cup (V_1 \cap A)) \cap (U_2 \cup (V_2 \cap A)) \\
+          &= (U_1 \cap U_2) \cup (U_1 \cap V_2 \cap A) \cup (U_2 \cap V_1 \cap A) \cup (V_1 \cap V_2 \cap A) \\
+          &= (U_1 \cap U_2) \cup \Big[ (U_1 \cap V_2) \cup (U_2 \cap V_1) \cup (V_1 \cap V_2) \Big] \cap A
+      \end{align*}
+      Let $U' = U_1 \cap U_2$ and $V' = (U_1 \cap V_2) \cup (U_2 \cap V_1) \cup (V_1 \cap V_2)$. Since $\mathcal{T}$ is closed under finite intersections and unions, $U', V' \in \mathcal{T}$. The intersection is of the form $U' \cup (V' \cap A)$, so it is in $\mathcal{T}_A$. This generalizes to any finite intersection by induction.
+  \end{enumerate}
+  Therefore, $\mathcal{T}_A$ is a topology on $X$.
+\end{solution}
+
+% % Problem 3B
+% \begin{problem}
+%   Any closed subset of the plane $\R^2$ is the frontier of some set in $\R^2$.
+% \end{problem}
+%
+% \begin{solution}
+%   For a given closed subset $A$ consider the set of all rational points in $A$, call it $A_{\Q}$.
+%   Let $\overline{A_{\Q}}$ be the closure of this set.
+%   We will show that $A = \overline{A_{\Q}}$.
+%
+%   First take any $x \in A$.
+%   Since the rationals are dense in the reals there is a rational point $p$ arbitrarily close to $x$.
+%   Thus $x$ is a limit point of $A_{\Q}$ and $x \in \overline{A_{\Q}}$.
+%   Hence $A \subset \overline{A_{\Q}}$.
+%
+%   By the definition of the closure, sence $A$ is a closed set that contains $A_{\Q}$ it follows that $\overline{A_{\Q}} \subset A$.
+%   Thus we see that $A = \overline{A_{\Q}}$.
+%
+%   Now let us consider $\overline{R^2 \ A_{\Q}}$.
+%   This is equivalent to the closure of set of all non-rational points union the set of rationals not in $A$.
+%   Notice that the set of all irrational points is a subset of $R^2 \ A_{\Q}$ and $A \subset B$ implies $\overline{A} \subset \overline{B}$.
+%   The closure of the set of all irrational points is $R^2$ itself, because the irrational points are dense in the real plane.
+%   Thus we have that $\overline{R^2 \ A_{\Q}} = R^2$.
+%
+%   Finally, we conclude that $Fr(A_{\Q}) = \overline{A_{\Q}} \cap \overline{R^2 \ A_{\Q}} = A \cap R^2 = A$, as desired.
+% \end{solution}

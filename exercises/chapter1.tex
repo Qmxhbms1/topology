@@ -121,29 +121,69 @@
   Therefore, $\mathcal{T}_A$ is a topology on $X$.
 \end{solution}
 
-% % Problem 3B
-% \begin{problem}
-%   Any closed subset of the plane $\R^2$ is the frontier of some set in $\R^2$.
-% \end{problem}
-%
-% \begin{solution}
-%   For a given closed subset $A$ consider the set of all rational points in $A$, call it $A_{\Q}$.
-%   Let $\overline{A_{\Q}}$ be the closure of this set.
-%   We will show that $A = \overline{A_{\Q}}$.
-%
-%   First take any $x \in A$.
-%   Since the rationals are dense in the reals there is a rational point $p$ arbitrarily close to $x$.
-%   Thus $x$ is a limit point of $A_{\Q}$ and $x \in \overline{A_{\Q}}$.
-%   Hence $A \subset \overline{A_{\Q}}$.
-%
-%   By the definition of the closure, sence $A$ is a closed set that contains $A_{\Q}$ it follows that $\overline{A_{\Q}} \subset A$.
-%   Thus we see that $A = \overline{A_{\Q}}$.
-%
-%   Now let us consider $\overline{R^2 \ A_{\Q}}$.
-%   This is equivalent to the closure of set of all non-rational points union the set of rationals not in $A$.
-%   Notice that the set of all irrational points is a subset of $R^2 \ A_{\Q}$ and $A \subset B$ implies $\overline{A} \subset \overline{B}$.
-%   The closure of the set of all irrational points is $R^2$ itself, because the irrational points are dense in the real plane.
-%   Thus we have that $\overline{R^2 \ A_{\Q}} = R^2$.
-%
-%   Finally, we conclude that $Fr(A_{\Q}) = \overline{A_{\Q}} \cap \overline{R^2 \ A_{\Q}} = A \cap R^2 = A$, as desired.
-% \end{solution}
+% Problem 3B
+\begin{problem}
+  Any closed subset of the plane $\R^2$ is the frontier of some set in $\R^2$.
+\end{problem}
+
+\begin{solution}
+  Let $C$ be a closed subset of $\R^2$.
+  If $C$ has an empty interior we are done.
+  Otherwise construct a dense subset of $C$ with an empty interior and call it $D$, for example $D = \{(x, y) \in C | x + y \in \Q\}$.
+  The closure of $D$ is $C$ because $C$ is closed and $D$ is dense in $C$.
+  The interior of $D$ is empty by construction.
+  Thus the boundary of $D$ is $C \ \emptyset = C$.
+\end{solution}
+
+% Problem 3C
+\begin{problem}
+  If $A$ is any subset of a topological space, the largest possible number of different sets in the two sequences
+  \[A, A^{c}, A^{ck}, A^{ckc}, \ldots\]
+  \[A, A^{k}, A^{kc}, A^{kck}, \ldots\]
+  (where $c$ denotes complementation and $k$ denotes closure) is 14.
+  There is a subset of $R$ which gives 14.
+\end{problem}
+
+\begin{solution}
+  The fact that there cannot be more than 14 sets follows directly from the following properties:
+  \begin{enumerate}
+    \item $S^{kk} = S^{k}$;
+    \item $S^{cc} = S$;
+    \item $S^{kckckckc} = S^{kckc}$.
+  \end{enumerate}
+  Take the following set in the reals:
+  \[(0, 1) \cup (1, 2) \cup \{3\} \cup ([4, 5] \cap \Q)\].
+  The following sets are all distinct:
+  \begin{enumerate}
+    \item $A = (0, 1) \cup (1, 2) \cup \{3\} \cup ([4, 5] \cap \Q)$;
+    \item $A^{c} = (- \infty, 0] \cup \{1\} \cup [2, 3) \cup (3, 4) \cup ((4, 5) \ \Q) \cup (5, \infty)$;
+    \item $A^{ck} = (- \infty, 0] \cup \{1\} \cup [2, \infty)$;
+    \item $A^{ckc} = (0, 1) \cup (1, 2)$;
+    \item $A^{ckck} = [0, 2]$;
+    \item $A^{ckckc} = (- \infty, 0) \cup (2, \infty)$;
+    \item $A^{ckckck} = (- \infty, 0] \cup [2, \infty)$;
+    \item $A^{ckckckc} = (0, 2)$;
+    \item $A^{k} = [0, 2] \cup \{3\} \cup [4, 5]$;
+    \item $A^{kc} = (- \infty, 0) \cup (2, 3) \cup (3, 4) \cup (5, \infty)$;
+    \item $A^{kck} = (- \infty, 0] \cup [2, 4] \cup [5, \infty)$;
+    \item $A^{kckc} = (0, 2) \cup (4, 5)$;
+    \item $A^{kckck} = [0, 2] \cup [4, 5]$;
+    \item $A^{kckckc} = (- \infty, 0) \cup (2, 4) \cup (5, \infty)$;
+    \item $A^{kckckck} = (- \infty, 0], \cup [2, 4] \cup [5, \infty)$.
+  \end{enumerate}
+\end{solution}
+
+% Problem 3D
+\begin{problem}
+  An open subset $G$ in a topological space is regularly open iff $G$ is the interior of its closure.
+  A closed subset is regularly closed iff it is the closure of its interior.
+  \begin{enumerate}
+    \item The complement of a regularly oepn set is regularly closed and vice versa.
+    \item There are open sets in $\R$ which are not regularly open.
+    \item If $A$ is any subset of a topological space, then $Int(Cl(A))$ is regularly open.
+    \item The intersection, but not necessarily the union, of two regularly open sets is regularly open.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+\end{solution}

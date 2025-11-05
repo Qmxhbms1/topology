@@ -178,7 +178,7 @@
   An open subset $G$ in a topological space is regularly open iff $G$ is the interior of its closure.
   A closed subset is regularly closed iff it is the closure of its interior.
   \begin{enumerate}
-    \item The complement of a regularly oepn set is regularly closed and vice versa.
+    \item The complement of a regularly open set is regularly closed and vice versa.
     \item There are open sets in $\R$ which are not regularly open.
     \item If $A$ is any subset of a topological space, then $Int(Cl(A))$ is regularly open.
     \item The intersection, but not necessarily the union, of two regularly open sets is regularly open.
@@ -186,4 +186,28 @@
 \end{problem}
 
 \begin{solution}
+  \begin{enumerate}
+    \item Let $X$ be our topological space.
+      Let $G$ be a regularly open set, i.e., let $G = Int(Cl(G))$.
+      Let us consider its complement $X \ G$.
+      Clearly we have that $X \ G = X \ Int(Cl(G))$.
+      By the connection of the interior and closure we know that this complement is equal to $Cl(X \ Cl(G))$.
+      Applying the other connection we get that this complement is equal to $Cl(Int(X \ G))$.
+    \item Consider the union of open intervals $(0, 1) \cup (1, 2)$.
+      The closure of this set is the closed interval $[0, 2]$.
+      The interior of this closed interval is the open set $(0, 2)$.
+      We can clearly see that $1 \in (0, 2)$ but $1 \notin (0, 1) \cup (1, 2)$, thus these are not equal.
+    \item We know that $Int(S) \subset S \subset Cl(S)$, for any set $S$.
+      Also, we have that $A \subset B$ implies both $Int(A) \subset Int(B)$ and $Cl(A) \subset Cl(B)$.
+      Thus we have
+      \[Cl(Int(S) = Cl(Int(Int(S)) \subset Cl(Int(Cl(Int(S)))) \subset Cl(Cl(Int(S))) = Cl(Int(S)).\]
+      The proof is completed by putting $A$ as the complement of $S$.
+    \item Let $A$ and $B$ be regularly open sets.
+      We wish to show that $A \cap B = Int(Cl(A \cap B))$.
+      Obviously we then have $A = Int(Cl(A))$ and $B = (Int(Cl(B)))$.
+      Taking their intersection we get $Int(Cl(A)) \cap Int(Cl(B)) = Int(Cl(A) \cap Cl(B))$.
+      Thus we really want to show that $Cl(A \cap B) = Cl(A) \cap Cl(B)$ when $A, B$ are regularly open.
+      Since $Cl(A \cap B)$ is the smallest closed set containing $A \cap B$, $A \cap B \subset Cl(A) \cap Cl(B)$ and $Cl(A) \cap Cl(B)$ is closed by Theorem 3.4, it follows that $Cl(A \cap B) \subset Cl(A) \cap Cl(B)$.
+% Not finished, fourth may be completely wrong direction
+  \end{enumerate}
 \end{solution}

@@ -132,7 +132,7 @@
   Otherwise construct a dense subset of $C$ with an empty interior and call it $D$, for example $D = \{(x, y) \in C | x + y \in \Q\}$.
   The closure of $D$ is $C$ because $C$ is closed and $D$ is dense in $C$.
   The interior of $D$ is empty by construction.
-  Thus the boundary of $D$ is $C \ \emptyset = C$.
+  Thus the boundary of $D$ is $C \textbackslash \emptyset = C$.
 \end{solution}
 
 % Problem 3C
@@ -189,8 +189,8 @@
   \begin{enumerate}
     \item Let $X$ be our topological space.
       Let $G$ be a regularly open set, i.e., let $G = Int(Cl(G))$.
-      Let us consider its complement $X \ G$.
-      Clearly we have that $X \ G = X \ Int(Cl(G))$.
+      Let us consider its complement $X \textbackslash G$.
+      Clearly we have that $X \textbackslash G = X \textbackslash Int(Cl(G))$.
       By the connection of the interior and closure we know that this complement is equal to $Cl(X \ Cl(G))$.
       Applying the other connection we get that this complement is equal to $Cl(Int(X \ G))$.
     \item Consider the union of open intervals $(0, 1) \cup (1, 2)$.
@@ -206,8 +206,31 @@
       We wish to show that $A \cap B = Int(Cl(A \cap B))$.
       Obviously we then have $A = Int(Cl(A))$ and $B = (Int(Cl(B)))$.
       Taking their intersection we get $Int(Cl(A)) \cap Int(Cl(B)) = Int(Cl(A) \cap Cl(B))$.
-      Thus we really want to show that $Cl(A \cap B) = Cl(A) \cap Cl(B)$ when $A, B$ are regularly open.
-      Since $Cl(A \cap B)$ is the smallest closed set containing $A \cap B$, $A \cap B \subset Cl(A) \cap Cl(B)$ and $Cl(A) \cap Cl(B)$ is closed by Theorem 3.4, it follows that $Cl(A \cap B) \subset Cl(A) \cap Cl(B)$.
-% Not finished, fourth may be completely wrong direction
+      Let us consider the complements of these sets
+      \[X \textbackslash Int(Cl(A) \cap Cl(B)) = Cl(X \textbackslash (Cl(A) \cap Cl(B))) = Cl((X \textbackslash Cl(A)) \cup (X \textbackslash Cl(B))) = Cl(X \textbackslash Cl(A)) \cup Cl(X \textbackslash Cl(B)) =\]
+      \[(X \textbackslash Int(Cl(A))) \cup (X \textbackslash Int(Cl(B))) = (X \textbackslash A) \cup (X \textbackslash B) = X \textbackslash (A \cap B)\] 
+      and
+      \[X \textbackslash Int(Cl(A \cap B)) = Cl(X \textbackslash Cl(A \cap B)) = Cl(Int(X \textbackslash (A \cap B))) = X \textbackslash (A \cap B).\]
+      Since the complements are equal our desired equality follows.
+
+      To see that unions don't have this property consider again the example of $(0, 1) \cup (1, 2)$ in $\R$ with the standard topology.
+  \end{enumerate}
+\end{solution}
+
+% Problem 3F
+\begin{problem}
+  \begin{enumerate}
+    \item Give an example of a sequence $B_1, B_2, \ldots$ of closed sets in a topological space $X$ whose union is not closed.
+    \item If $\rho$ generates the topology on a metrizable space $X$ and, for each $\lambda \in \Lambda$, $C_{\lambda}$ is a closed set in $X$ such that $\rho (C_{\lambda_1}, C_{\lambda_2}) \ge \epsilon$ for all $\lambda_1$ and $\lambda_2$, where $\epsilon$ is some fixed positive number, then $\bigcup C_{\lambda}$ is closed.
+  \end{enumerate}
+\end{problem}
+
+\begin{solution}
+  \begin{enumerate}
+    \item Consider the standard topology on $\R^2$.
+      Let $B_i = \{\frac{1}{i}\}$.
+      Since every finite subset of $\R^2$ is closed it follows that every $B_i$ is a closed set.
+      However, the union of all $B_i$ is clearly not closed, as $0$ is a limit point of that set yet it is never in the set.
+    \item
   \end{enumerate}
 \end{solution}
